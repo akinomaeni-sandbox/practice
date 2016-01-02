@@ -15,22 +15,17 @@ result = Benchmark.measure do
   end
 
   def palindromic?(num)
-#    [10, 8, 2].each do |base|
-#      return false if num.palindromic? base
-#    end
-    return false unless num.palindromic? 10
-    return false unless num.palindromic? 8
-    return false unless num.palindromic? 2
-    return true
+    num.palindromic? && num.palindromic?(8) && num.palindromic?(2)
   end
 
-  10.upto(585) do |i|
-    if palindromic?(i)
-      puts i
-      puts i.to_s(8)
-      puts i.to_s(2)
-    end
+  i = 11
+  until palindromic?(i)
+    i += 2
   end
+
+  puts i
+  puts i.to_s(8)
+  puts i.to_s(2)
 end
 
 puts ""
