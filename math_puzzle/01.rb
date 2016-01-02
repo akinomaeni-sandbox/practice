@@ -10,12 +10,7 @@ result = Benchmark.measure do
   class Fixnum
     def palindromic?(base = 10)
       str = self.to_s(base)
-      size = str.size
-      t = (size) / 2
-      0.upto(t) do |i|
-        return false unless str[i] == str[ -1 * (i + 1) ]
-      end
-      return true
+      str == str.reverse
     end
   end
 
