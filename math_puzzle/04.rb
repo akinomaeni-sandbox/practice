@@ -10,17 +10,16 @@ result = Benchmark.measure do
   def count(n, m)
     c = 0
 
-    while(n > 0)
-      l = [m, 2**c].min
-      n -= l
+    while n > 0
+      n -= [m, 2**c].min
       c += 1
     end
 
     c
   end
 
-  puts count(20, 3)
-  puts count(100, 5)
+  puts count 20, 3
+  puts count 100, 5
 end
 
 puts ""
