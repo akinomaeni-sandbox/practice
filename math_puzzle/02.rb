@@ -14,16 +14,13 @@ result = Benchmark.measure do
   end
 
   answer = []
-  @opereters = [ " + ", " - ", " * ", " / ", ""]
+  @opereters = [ " * ", ""]
 
   def insert_opereters(string, index)
     strings = []
     @opereters.each do |o|
       str = string.clone
-      if str[index] == "0"
-        next if o == " / "
-        next unless str[index + 1] == " "
-      end
+      next if str[index] == "0"
       strings << str.insert(index, o)
     end
     strings
