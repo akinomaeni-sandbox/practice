@@ -16,42 +16,42 @@ result = Benchmark.measure do
   answer = []
   @opereters = [ "*", ""]
 
-  def insert_opereters(strs, index)
+  def insert_opereters(original_strings, index)
     strings = []
 
-    strs.each do |str|
-      @opereters.each do |o|
-        next if str[index] == "0"
+    original_strings.each do |original_string|
+      @opereters.each do |opereter|
+        next if original_string[index] == "0"
 
-        string = str.clone
-        strings << string.insert(index, o)
+        string = original_string.clone
+        strings << string.insert(index, opereter)
       end
     end
 
     strings
   end
 
-  def get_strings(num)
-    strings = []
+  def get_expressions(num)
+    expressions = []
 
-    strs = [num.to_s]
+    strings = [num.to_s]
     3.downto(1) do |i|
-      strs = insert_opereters(strs, i)
+      strings = insert_opereters(strings, i)
     end
 
-    strs.each do |str|
-      strings << str unless str.length == 4
+    strings.each do |string|
+      expressions << string unless string.length == 4
     end
 
-    strings
+    expressions
   end
 
   1000.upto(9999) do |i|
     next if i % 10 == 0
 
-    get_strings(i).each do |str|
-      if i.reversed? eval(str)
-        puts "#{str} = #{eval(str)}"
+    get_expressions(i).each do |expression|
+      if i.reversed? eval(expression)
+        puts "#{expression} = #{eval(expression)}"
         answer << i
         break
       end
